@@ -1,0 +1,1473 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Audiowide", sans-serif;
+}
+
+:root {
+  --bg-dark: #0c1022;
+  --text-dark: #ffffff;
+  --accent-gradient-dark: linear-gradient(45deg, #f06, #3cf);
+  --button-bg-dark: linear-gradient(45deg, #f06, #3cf, #f06);
+  --border-color-dark: #ffffff;
+  --glow-gradient-dark: linear-gradient(#f06, #3cf);
+  --text-shaddow-dark: #000000 0 0 2px, #000000 0 0 4px, #f06 0 0 6px,
+    #3cf 0 0 8px;
+
+  /* --bg-light: #00d9ff;
+  --text-light: #000000;
+  --accent-gradient-light: linear-gradient(45deg, #019b01, rgb(212, 0, 255));
+  --button-bg-light: linear-gradient(45deg, #019b01, rgb(212, 0, 255), #019b01);
+  --border-color-light: #000000;
+  --glow-gradient-light: linear-gradient(#019b01, rgb(212, 0, 255)); */
+
+  /* Variante 1 – Elegant & Minimalistisch */
+  /* --bg-light: #f5f5f5;
+  --text-light: #1a1a1a;
+  --accent-gradient-light: linear-gradient(45deg, #8e44ad, #3498db);
+  --button-bg-light: linear-gradient(45deg, #8e44ad, #3498db, #8e44ad);
+  --border-color-light: #cccccc;
+  --glow-gradient-light: linear-gradient(#8e44ad, #3498db); */
+
+  /* Variante 2 – Natürlich & Freundlich */
+  --bg-light: #e9f5ec;
+  --text-light: #2f3e46;
+  --accent-gradient-light: linear-gradient(45deg, #38b000, #0026ff);
+  --button-bg-light: linear-gradient(45deg, #0026ff, #57cc99, #0026ff);
+  --border-color-light: #a3b18a;
+  --glow-gradient-light: linear-gradient(#0026ff, #57cc99);
+  --text-shaddow-light: #fff 0 0 2px, #fff 0 0 4px, #38b000 0 0 6px,
+    #0026ff 0 0 8px;
+
+  /* Variante 3 – Modern & Technisch */
+  /* --bg-light: #f0f8ff;
+--text-light: #222831;
+--accent-gradient-light: linear-gradient(45deg, #00adb5, #ff5722);
+--button-bg-light: linear-gradient(45deg, #00adb5, #ff5722, #00adb5);
+--border-color-light: #cfd8dc;
+--glow-gradient-light: linear-gradient(#00adb5, #ff5722); */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+  background-image: url(./pictuares/background.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  background-attachment: fixed;
+}
+
+.trenner {
+  width: 100%;
+  height: 5px;
+  background: var(--accent-gradient-dark);
+  margin: 10px 0;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 150px;
+  width: 100%;
+  padding: 20px 15%;
+  background: transparent;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 3em;
+  color: var(--text-dark);
+  text-decoration: none;
+  font-weight: 600;
+  pointer-events: none;
+  opacity: 0;
+  animation: slideTop 1s ease forwards;
+  text-shadow: var(--text-shaddow-dark);
+}
+
+.navbar a {
+  display: inline-block;
+  font-size: 1.2em;
+  color: var(--text-dark);
+  text-decoration: none;
+  font-weight: 500;
+  margin: 0px 20px;
+  opacity: 0;
+  animation: slideTop 0.5s ease forwards;
+  animation-delay: calc(0.2s * var(--i));
+  padding: 10px 20px;
+}
+
+.navbar a.active,
+.navbar a:hover {
+  background: var(--accent-gradient-dark);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-size: 2.5em;
+  margin: 0;
+  padding: 0 20px;
+  transition: 1s ease;
+}
+
+/* ================================================================ burgermenu =========================================================== */
+/* ================================================================ burgermenu =========================================================== */
+/* ================================================================ burgermenu =========================================================== */
+
+#burgerMenu {
+  display: none;
+  position: fixed; /* bleibt beim Scrollen sichtbar */
+  top: 20px; /* Abstand vom oberen Rand */
+  left: 20px; /* Abstand vom linken Rand */
+  font-size: 2.5rem; /* Größe des Icons */
+  color: var(--text-dark); /* oder z.B. white */
+  cursor: pointer;
+  z-index: 999; /* damit es über anderen Elementen liegt */
+}
+
+/* ================================================================ lightbutton =========================================================== */
+/* ================================================================ lightbutton =========================================================== */
+/* ================================================================ lightbutton =========================================================== */
+
+.lightMode {
+  position: fixed;
+  top: 35px;
+  right: 20px;
+  width: 140px;
+  height: 70px;
+  background: var(--accent-gradient-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  opacity: 0;
+  animation: slideLeft 1s ease forwards;
+  animation-delay: 1s;
+}
+.lightMode ul {
+  display: flex;
+  width: 350px;
+}
+
+.lightMode ul li {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  list-style: none;
+  z-index: 1;
+}
+
+.lightMode ul li button {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.lightMode ul li button .icon {
+  position: relative;
+  display: block;
+  line-height: 70px;
+  font-size: 2.5em;
+  color: yellow;
+  transition: 0.5s;
+}
+
+.lightMode ul li.active button .icon {
+  transform: translateY(-32px) rotate(360deg);
+}
+
+.lightMode ul li button .text {
+  position: absolute;
+  color: yellow;
+  font-weight: 400;
+  font-size: 1.5em;
+  opacity: 0;
+  letter-spacing: 0.05em;
+  transform: translateY(20px);
+  transition: 0.5s;
+}
+
+.lightMode ul li.active button .text {
+  opacity: 1;
+  transform: translateY(10px);
+}
+
+.lightMode ul li button .circle {
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  border-radius: 50%;
+  border: 3px solid yellow;
+  transform: translateY(-35px) scale(0);
+}
+
+.lightMode ul li.active button .circle {
+  transition: 0.5s;
+  transition-delay: 0.2s;
+  transform: translateY(-35px) scale(1);
+}
+
+.indicator {
+  position: absolute;
+  top: -50%;
+  width: 70px;
+  height: 70px;
+  background: blue;
+  border: 6px solid #0c1022;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+}
+
+.indicator::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  top: 50%;
+  left: -22px;
+  border-top-right-radius: 20px;
+
+  box-shadow: 1px -10px 0 transparent;
+}
+
+.indicator::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  top: 50%;
+  right: -22px;
+  border-top-left-radius: 20px;
+  box-shadow: -1px -10px 0 #0c1022;
+}
+
+.lightMode ul li:nth-child(1).active ~ .indicator {
+  transform: translateX(calc(70px * 0));
+}
+
+.lightMode ul li:nth-child(2).active ~ .indicator {
+  transform: translateX(calc(70px * 1));
+}
+
+/* ================================================================ home =========================================================== */
+/* ================================================================ home =========================================================== */
+/* ================================================================ home =========================================================== */
+
+.home {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 70px 10% 0;
+}
+
+.home-content {
+  max-width: 500px;
+  margin-left: -30px;
+}
+
+.home-content h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  opacity: 0;
+  animation: slideRight 1s ease forwards;
+  animation-delay: 0.7s;
+  text-shadow: var(--text-shaddow-dark);
+}
+
+.home-content h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  opacity: 0;
+  animation: slideLeft 1s ease forwards;
+  animation-delay: 1s;
+  text-shadow: var(--text-shaddow-dark);
+}
+
+.home-content p {
+  font-size: 1rem;
+  margin: 20px 0 40px;
+  opacity: 0;
+  animation: slideLeft 1s ease forwards;
+  animation-delay: 1.3s;
+  text-shadow: var(--text-shaddow-dark);
+}
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 48px;
+  border-radius: 40px;
+  font-size: 19px;
+  color: var(--text-dark);
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 1px;
+  z-index: 1;
+  opacity: 0;
+  animation: slideTop 1s ease forwards;
+  animation-delay: 1.8s;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  inset: 0;
+  background: var(--accent-gradient-dark);
+  background-size: 200%;
+  background-position: 0 0;
+  z-index: -1;
+  border-radius: 40px;
+  filter: blur(5px);
+  transition: 0.5s ease;
+}
+
+.btn:hover::before {
+  background-position: 100% 0;
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  inset: 0;
+  background: var(--accent-gradient-dark);
+  background-size: 200%;
+  background-position: 0 0;
+  z-index: -1;
+  border-radius: 40px;
+  transition: 0.5s ease;
+}
+
+.btn:hover::after {
+  background-position: 100% 0;
+}
+
+/* ================================================================ icons =========================================================== */
+/* ================================================================ icons =========================================================== */
+/* ================================================================ icons =========================================================== */
+.home-sci a {
+  /* position: relative; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 40px;
+  height: 40px;
+  background: var(--accent-gradient-dark);
+  border-radius: 50%;
+  font-size: 20px;
+  color: var(--text-dark);
+  text-decoration: none;
+  margin: 20px 60px;
+  z-index: 1;
+}
+
+.home-sci a:nth-child(1) {
+  opacity: 0;
+  animation: slideBottom 1s ease forwards;
+  animation-delay: 2.4s;
+}
+
+.home-sci a:nth-child(2) {
+  opacity: 0;
+  animation: slideBottom 1s ease forwards;
+  animation-delay: 2.1s;
+}
+
+.home-sci a:nth-child(3) {
+  opacity: 0;
+  animation: slideRight 1s ease forwards;
+  animation-delay: 2.1s;
+}
+
+.home-sci a:nth-child(4) {
+  opacity: 0;
+  animation: slideTop 1s ease forwards;
+  animation-delay: 2.1s;
+}
+
+.home-sci a:nth-child(5) {
+  opacity: 0;
+  animation: slideTop 1s ease forwards;
+  animation-delay: 2.4s;
+}
+
+.home-sci a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--accent-gradient-dark);
+  border-radius: 50%;
+  z-index: -1;
+  transition: 0.5s ease;
+}
+
+.home-sci a:hover::before {
+  filter: blur(5px);
+}
+
+.home-sci a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #0c1022;
+  border-radius: 50%;
+  transform: scale(0.88);
+  z-index: -1;
+  transition: 0.5s ease;
+}
+
+.home-sci a:hover::after {
+  transform: scale(0);
+}
+
+/* ================================================================ home circle-img =========================================================== */
+/* ================================================================ home circle-img =========================================================== */
+/* ================================================================ home circle-img =========================================================== */
+
+.home-img {
+  width: 400px;
+  height: 400px;
+  opacity: 0;
+  animation: zoomIn 1s ease forwards, floatImage 4s ease-in-out infinite;
+  animation-delay: 2.1s, 3.1s;
+}
+
+.home-img .glowing-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-img .glowing-circle::after {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  background: #0c1022;
+  border-radius: 50%;
+}
+
+.glowing-circle span {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  background: var(--accent-gradient-dark);
+  border-radius: 50%;
+  animation: circleRotate 3s linear infinite;
+}
+
+.glowing-circle span:nth-child(1) {
+  filter: blur(10px);
+}
+
+.glowing-circle .image {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.image img {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  max-width: 320px;
+  object-fit: cover;
+}
+
+/* ================================================================Keyframes Animation=========================================================== */
+/* ================================================================Keyframes Animation=========================================================== */
+/* ================================================================Keyframes Animation=========================================================== */
+@keyframes slideTop {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes slideBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes floatImage {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-24px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes circleRotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==================================================About me=================================================== */
+/* ==================================================About me=================================================== */
+/* ==================================================About me=================================================== */
+.aboutMe {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+  padding: 70px 10% 0;
+}
+
+.aboutTxt {
+  text-align: center;
+  margin: 80px 50px;
+  max-height: 300px; /* maximale Höhe */
+  overflow-y: auto; /* Scroll-Leiste nur vertikal, wenn nötig */
+  padding-right: 10px; /* Platz für Scrollbar, damit Text nicht abgeschnitten wird */
+  text-shadow: var(--text-shaddow-dark);
+}
+
+.aboutTxt::-webkit-scrollbar {
+  width: 8px;
+}
+
+.aboutTxt::-webkit-scrollbar-track {
+  background: #0c1022;
+  border-radius: 4px;
+}
+
+.aboutTxt::-webkit-scrollbar-thumb {
+  background: var(--accent-gradient-dark);
+  border-radius: 4px;
+}
+
+body.light-mode .aboutTxt::-webkit-scrollbar-track {
+  background: rgb(117, 190, 250);
+}
+
+body.light-mode .aboutTxt::-webkit-scrollbar-thumb {
+  background: var(--accent-gradient-light);
+}
+
+.aboutTxt h2 {
+  margin-bottom: 50px;
+  font-size: 2rem;
+  font-weight: 700;
+  opacity: 0;
+  animation: slideLeft 1s ease forwards;
+  animation-delay: 1s;
+}
+
+.aboutTxt p {
+  font-size: 1.3rem;
+  margin: 20px 0 40px;
+}
+
+.aboutTxt p:nth-child(2) {
+  opacity: 0;
+  animation: slideLeft 1s ease forwards;
+  animation-delay: 2s;
+}
+
+.aboutTxt p:nth-child(3) {
+  opacity: 0;
+  animation: slideLeft 1s ease forwards;
+  animation-delay: 2.4s;
+}
+
+.aboutTxt p:nth-child(4) {
+  opacity: 0;
+  animation: slideLeft 1s ease forwards;
+  animation-delay: 2.8s;
+}
+
+.aboutTxt p:nth-child(5) {
+  opacity: 0;
+  animation: slideLeft 1s ease forwards;
+  animation-delay: 3.2s;
+}
+
+/* ==================================================Skills=================================================== */
+/* ==================================================Skills=================================================== */
+/* ==================================================Skills=================================================== */
+.skills {
+  display: flex;
+  width: 100%;
+  height: 90vh;
+  padding: 70px 10% 0;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.skillContainer img {
+  width: 100px;
+  margin: 40px;
+}
+
+.skills h2 {
+  text-align: center;
+  font-size: 3rem;
+  text-shadow: var(--text-shaddow-dark);
+}
+
+.skillContainer h3 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-shadow: var(--text-shaddow-dark);
+}
+
+.skillContainer p {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+  text-shadow: var(--text-shaddow-dark);
+}
+
+.skillContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.skillContainer div {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 400px;
+}
+
+.one div:nth-child(1) {
+  opacity: 0;
+  animation: slideRight 1s ease forwards;
+  animation-delay: 1.2s;
+}
+.one div:nth-child(2) {
+  opacity: 0;
+  animation: slideBottom 1s ease forwards;
+  animation-delay: 2.8s;
+}
+
+.one div:nth-child(3) {
+  opacity: 0;
+  animation: slideLeft 1s ease forwards;
+  animation-delay: 2.4s;
+}
+
+.two div:nth-child(1) {
+  opacity: 0;
+  animation: slideTop 1s ease forwards;
+  animation-delay: 1.6s;
+}
+
+.two div:nth-child(2) {
+  opacity: 0;
+  animation: slideTop 1s ease forwards;
+  animation-delay: 2s;
+}
+/* ==================================================portfolio=================================================== */
+/* ==================================================portfolio=================================================== */
+/* ==================================================portfolio=================================================== */
+.portfolio h2 {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 2rem;
+  text-shadow: var(--text-shaddow-dark);
+}
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.banner .slider {
+  position: absolute;
+  width: 200px;
+  height: 250px;
+  top: 10%;
+  left: calc(50% -100px);
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  animation: autoRun 30s linear infinite;
+}
+
+.banner .slider:hover {
+  animation-play-state: paused;
+}
+
+.item a {
+  text-decoration: none;
+  font-size: 0.9rem;
+  text-align: center;
+  background: var(--accent-gradient-dark);
+  color: var(--text-dark);
+  border-radius: 4px;
+  padding: 4px 6px;
+  margin-top: 4px;
+  display: inline-block;
+}
+
+@keyframes autoRun {
+  from {
+    transform: perspective(1000px) rotateX(-10deg) rotateY(0deg);
+  }
+  to {
+    transform: perspective(1000px) rotateX(-10deg) rotateY(-360deg);
+  }
+}
+
+.banner .slider .item {
+  position: absolute;
+  inset: 0 0 0 0;
+  transform: rotateY(calc(var(--position) * (360 / var(--quantity)) * 1deg))
+    translateZ(550px);
+}
+
+.banner .slider .item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px; /* optional für modernere Optik */
+}
+
+/* ==================================================Contact Me=================================================== */
+/* ==================================================Contact Me=================================================== */
+/* ==================================================Contact Me=================================================== */
+
+.contact {
+  padding: 80px 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color-dark);
+  border-radius: 20px;
+  max-width: 600px;
+  height: 500px;
+  margin: 200px auto 50px auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  color: var(--text-dark);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.contact h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-shadow: var(--text-shaddow-dark);
+}
+
+.contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact input,
+.contact textarea {
+  padding: 15px;
+  border: none;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-dark);
+  font-size: 1rem;
+  resize: none;
+  width: 80%;
+}
+.contact textarea {
+  height: 150px;
+}
+
+.contact input:focus,
+.contact textarea:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+/* ==================================================Light mode=================================================== */
+/* ==================================================Light mode=================================================== */
+/* ==================================================Light mode=================================================== */
+
+body.light-mode {
+  background: var(--bg-light);
+  color: var(--text-light);
+  background-image: url(./pictuares/background.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  background-attachment: fixed;
+}
+
+body.light-mode .trenner {
+  background: var(--accent-gradient-light);
+}
+body.light-mode .logo {
+  color: var(--text-light);
+  text-shadow: var(--text-shaddow-light);
+}
+
+body.light-mode .navbar a {
+  color: var(--text-light);
+}
+
+body.light-mode .navbar a.active,
+body.light-mode .navbar a:hover {
+  background: var(--accent-gradient-light);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body.light-mode #burgerMenu {
+  color: var(--text-light);
+}
+
+body.light-mode .lightMode {
+  background: var(--accent-gradient-light);
+}
+
+body.light-mode .lightMode ul li button .circle {
+  border: 3px solid blue; /* hier */
+}
+
+body.light-mode .indicator {
+  background: yellow; /* hier */
+  border: 6px solid var(--bg-light);
+}
+
+body.light-mode .indicator::before {
+  box-shadow: 1px -10px 0 var(--bg-light);
+}
+
+body.light-mode .indicator::after {
+  box-shadow: -1px -10px 0 var(--bg-light);
+}
+
+body.light-mode .btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  inset: 0;
+  background: var(--accent-gradient-light);
+  background-size: 200%;
+  background-position: 0 0;
+  z-index: -1;
+  border-radius: 40px;
+  filter: blur(5px);
+  transition: 0.5s ease;
+}
+
+body.light-mode .btn:hover::before {
+  background-position: 100% 0;
+}
+
+body.light-mode .btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  inset: 0;
+  background: var(--accent-gradient-light);
+  background-size: 200%;
+  background-position: 0 0;
+  z-index: -1;
+  border-radius: 40px;
+  transition: 0.5s ease;
+}
+
+body.light-mode .btn:hover::after {
+  background-position: 100% 0;
+}
+
+body.light-mode .home-sci a {
+  background: var(--accent-gradient-light);
+}
+
+body.light-mode .home-sci a::before {
+  background: var(--accent-gradient-light);
+}
+
+body.light-mode .home-img .glowing-circle::after {
+  background: var(--bg-light);
+}
+
+body.light-mode .glowing-circle span {
+  background: var(--accent-gradient-light);
+}
+
+body.light-mode .item a {
+  background: var(--accent-gradient-light);
+}
+
+body.light-mode .contact {
+  border: 1px solid var(--border-color-light);
+  color: var(--text-light);
+}
+
+body.light-mode .contact input,
+body.light-mode .contact textarea {
+  background-color: rgba(0, 0, 0, 0.26);
+  color: var(--text-light);
+}
+
+body.light-mode .lightMode ul li button .icon {
+  color: blue;
+}
+
+body.light-mode .lightMode ul li button .text {
+  color: blue;
+}
+
+body.light-mode .aboutTxt::-webkit-scrollbar-track {
+  background: var(--bg-light);
+}
+
+body.light-mode .home-content h1 {
+  text-shadow: var(--text-shaddow-light);
+}
+
+body.light-mode .home-content h3 {
+  text-shadow: var(--text-shaddow-light);
+}
+
+body.light-mode .home-content p {
+  text-shadow: var(--text-shaddow-light);
+}
+
+body.light-mode .aboutTxt {
+  text-shadow: var(--text-shaddow-light);
+}
+
+body.light-mode .skills h2 {
+  text-shadow: var(--text-shaddow-light);
+}
+
+body.light-mode .skillContainer h3 {
+  text-shadow: var(--text-shaddow-light);
+}
+
+body.light-mode .portfolio h2 {
+  text-shadow: var(--text-shaddow-light);
+}
+
+body.light-mode .contact h2 {
+  text-shadow: var(--text-shaddow-light);
+}
+
+body.light-mode .skillContainer p {
+  text-shadow: var(--text-shaddow-light);
+}
+
+body.light-mode .lightMode ul li.active button .icon {
+  transform: translateY(-32px) rotate(-360deg);
+}
+
+/* ================================================== Responsive =================================================== */
+/* ================================================== Responsive =================================================== */
+/* ================================================== Responsive =================================================== */
+
+/* ================================================== handy (max-width: 480px) & home =================================================== */
+/* ================================================== handy (max-width: 480px) & home =================================================== */
+
+@media (max-width: 480px) {
+  #burgerMenu {
+    display: block;
+  }
+
+  .mobile-nav {
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    background: transparent;
+    width: 300px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: right 0.3s ease;
+    z-index: 999;
+  }
+
+  .mobile-nav.active {
+    left: 0;
+  }
+
+  .header {
+    justify-content: flex-start;
+  }
+
+  .logo {
+    font-size: 2.8em;
+  }
+  /* Gilt für Handy/Tablet */
+  .home {
+    flex-direction: column-reverse;
+    margin-top: 100px;
+  }
+
+  .home-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .home-content h1 {
+    font-size: 2.1rem;
+    text-align: center;
+  }
+
+  .home-content h3 {
+    font-size: 1.6rem;
+  }
+
+  .home-content p {
+    text-align: center;
+  }
+
+  /* ================================================== icons =================================================== */
+  /* ================================================== icons =================================================== */
+  .home-sci {
+    display: flex;
+    justify-content: center;
+  }
+
+  .home-sci a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 20px;
+  }
+
+  /* ==================================================About me=================================================== */
+  /* ==================================================About me=================================================== */
+  .aboutMe {
+    flex-direction: column-reverse;
+  }
+  .aboutTxt {
+    width: 90%;
+  }
+  .aboutTxt h2 {
+    font-size: 1.6rem;
+  }
+
+  .aboutTxt p {
+    font-size: 1rem;
+  }
+
+  /* ==================================================Skills=================================================== */
+  /* ==================================================Skills=================================================== */
+  .skills {
+    width: 100%;
+    height: fit-content;
+    align-items: center;
+  }
+
+  .skills h2 {
+    font-size: 2rem;
+  }
+
+  .skillContainer h3 {
+    font-size: 1.6rem;
+  }
+
+  .skillContainer {
+    display: flex;
+    flex-direction: column; /* Elemente von oben nach unten */
+    align-items: center; /* Zentriert die Kinder horizontal */
+    gap: 40px; /* Abstand zwischen den Elementen */
+  }
+
+  .skillContainer div {
+    width: 300px;
+  }
+
+  /* ==================================================portfolio=================================================== */
+  /* ==================================================portfolio=================================================== */
+  .portfolio h2 {
+    font-size: 1.6rem;
+  }
+
+  .banner {
+    height: 60vh;
+  }
+
+  .banner .slider {
+    width: 120px; /* kleiner */
+    height: 160px; /* kleiner */
+    top: 15%;
+    left: calc(50% - 60px); /* zentriert anhand neuer Breite */
+  }
+
+  .banner .slider .item {
+    transform: rotateY(calc(var(--position) * (360 / var(--quantity)) * 1deg))
+      translateZ(300px); /* kleinerer Radius → mehr Tiefe */
+  }
+
+  .item a {
+    font-size: 0.75rem;
+  }
+
+  /* ==================================================Contact Me=================================================== */
+  /* ==================================================Contact Me=================================================== */
+
+  .contact {
+    width: 350px;
+  }
+}
+/* ================================================== Next =================================================== */
+/* ================================================== Next =================================================== */
+/* ================================================== Next =================================================== */
+/* ================================================== Next =================================================== */
+
+/* ================================================== handy (min-width: 481px) and (max-width: 768px) =================================================== */
+/* ================================================== handy (min-width: 481px) and (max-width: 768px) =================================================== */
+
+@media (min-width: 481px) and (max-width: 768px) {
+  /* ================================================== burgerMenu =================================================== */
+  /* ================================================== burgerMenu =================================================== */
+  #burgerMenu {
+    display: block;
+  }
+
+  .mobile-nav {
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    background: transparent;
+    width: 300px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: right 0.3s ease;
+    z-index: 999;
+  }
+
+  .mobile-nav.active {
+    left: 0;
+  }
+
+  .header {
+    justify-content: flex-start;
+  }
+
+  .logo {
+    font-size: 2.8em;
+  }
+
+  /* ================================================== home =================================================== */
+  /* ================================================== home =================================================== */
+  /* Gilt für Handy/Tablet */
+  .home {
+    flex-direction: column-reverse;
+    margin-top: 100px;
+  }
+
+  .home-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .home-content h1 {
+    font-size: 2.1rem;
+    text-align: center;
+  }
+
+  .home-content h3 {
+    font-size: 1.6rem;
+  }
+
+  .home-content p {
+    text-align: center;
+  }
+
+  /* ================================================== icons =================================================== */
+  /* ================================================== icons =================================================== */
+  .home-sci {
+    display: flex;
+    justify-content: center;
+  }
+
+  .home-sci a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 20px;
+  }
+
+  /* ==================================================About me=================================================== */
+  /* ==================================================About me=================================================== */
+  .aboutMe {
+    flex-direction: column-reverse;
+  }
+  .aboutTxt {
+    width: 90%;
+  }
+
+  .aboutTxt h2 {
+    font-size: 1.6rem;
+  }
+
+  .aboutTxt p {
+    font-size: 1rem;
+  }
+
+  /* ==================================================Skills=================================================== */
+  /* ==================================================Skills=================================================== */
+
+  .skillContainer {
+    flex-direction: row; /* Elemente von oben nach unten */
+  }
+
+  .skillContainer div {
+    width: 200px;
+  }
+
+  /* ==================================================portfolio=================================================== */
+  /* ==================================================portfolio=================================================== */
+  .portfolio h2 {
+    font-size: 1.6rem;
+  }
+
+  .banner {
+    height: 60vh;
+  }
+
+  .banner .slider {
+    width: 120px; /* kleiner */
+    height: 160px; /* kleiner */
+    top: 15%;
+    left: calc(50% - 60px); /* zentriert anhand neuer Breite */
+  }
+
+  .banner .slider .item {
+    transform: rotateY(calc(var(--position) * (360 / var(--quantity)) * 1deg))
+      translateZ(300px); /* kleinerer Radius → mehr Tiefe */
+  }
+
+  .item a {
+    font-size: 0.75rem;
+  }
+
+  /* ==================================================Contact Me=================================================== */
+  /* ==================================================Contact Me=================================================== */
+
+  .contact {
+    width: 450px;
+  }
+}
+
+/* ================================================== Next =================================================== */
+/* ================================================== Next =================================================== */
+/* ================================================== Next =================================================== */
+/* ================================================== Next =================================================== */
+
+/* ================================================== tablet (min-width: 789px) and (max-width: 1024) & home =================================================== */
+/* ================================================== tablet (min-width: 789px) and (max-width: 1024) & home =================================================== */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  #burgerMenu {
+    display: block;
+  }
+
+  .mobile-nav {
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    background: transparent;
+    width: 300px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: right 0.3s ease;
+    z-index: 999;
+  }
+
+  .mobile-nav.active {
+    left: 0;
+  }
+
+  /* ==================================================About me=================================================== */
+  /* ==================================================About me=================================================== */
+
+  .aboutMe {
+    flex-direction: column-reverse;
+  }
+  .aboutTxt {
+    width: 90%;
+  }
+
+  .aboutTxt h2 {
+    font-size: 1.6rem;
+  }
+
+  .aboutTxt p {
+    font-size: 1rem;
+  }
+
+  /* ==================================================portfolio=================================================== */
+  /* ==================================================portfolio=================================================== */
+
+  .banner .slider .item {
+    transform: rotateY(calc(var(--position) * (360 / var(--quantity)) * 1deg))
+      translateZ(400px); /* kleinerer Radius → mehr Tiefe */
+  }
+
+  /* ==================================================Contact Me=================================================== */
+  /* ==================================================Contact Me=================================================== */
+
+  .contact {
+    width: 450px;
+  }
+}
+
+/* ================================================== Next =================================================== */
+/* ================================================== Next =================================================== */
+/* ================================================== Next =================================================== */
+/* ================================================== Next =================================================== */
+
+/* ================================================== tablet (min-width: 1025px) and (max-width: 1500px) & home =================================================== */
+/* ================================================== tablet (min-width: 1025px) and (max-width: 1500px) & home =================================================== */
+
+@media (min-width: 1025px) and (max-width: 1500px) {
+  #burgerMenu {
+    display: block;
+  }
+
+  .mobile-nav {
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    background: transparent;
+    width: 300px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: right 0.3s ease;
+    z-index: 999;
+  }
+
+  .mobile-nav.active {
+    left: 0;
+  }
+
+  /* ==================================================About me=================================================== */
+  /* ==================================================About me=================================================== */
+
+  .aboutTxt {
+    width: 600px;
+  }
+
+  /* ==================================================portfolio=================================================== */
+  /* ==================================================portfolio=================================================== */
+
+  .banner .slider .item {
+    transform: rotateY(calc(var(--position) * (360 / var(--quantity)) * 1deg))
+      translateZ(500px); /* kleinerer Radius → mehr Tiefe */
+  }
+
+  /* ==================================================Contact Me=================================================== */
+  /* ==================================================Contact Me=================================================== */
+
+  .contact {
+    width: 450px;
+  }
+}
