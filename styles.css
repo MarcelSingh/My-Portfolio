@@ -51,6 +51,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-y: scroll;
 }
 
 body {
@@ -61,6 +62,7 @@ body {
   background-position: center center;
   background-size: contain;
   background-attachment: fixed;
+  overflow-x: hidden;
 }
 
 .trenner {
@@ -1070,7 +1072,7 @@ body.light-mode .lightMode ul li.active button .icon {
     width: 70px;
     height: 35px;
     top: 5px;
-    left: 250px;
+    right: 30px;
   }
 
   .lightMode ul {
@@ -1164,11 +1166,11 @@ body.light-mode .lightMode ul li.active button .icon {
   }
 
   .header {
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .logo {
-    font-size: 2em;
+    font-size: 2.8em;
   }
   /* Gilt für Handy/Tablet */
   .home {
@@ -1253,6 +1255,35 @@ body.light-mode .lightMode ul li.active button .icon {
     width: 300px;
   }
 
+    .one div:nth-child(1) {
+    opacity: 0;
+    animation: slideBottom 1s ease forwards;
+    animation-delay: 1.2s;
+  }
+  .one div:nth-child(2) {
+    opacity: 0;
+    animation: slideBottom 1s ease forwards;
+    animation-delay: 1.6s;
+  }
+
+  .one div:nth-child(3) {
+    opacity: 0;
+    animation: slideBottom 1s ease forwards;
+    animation-delay: 2s;
+  }
+
+  .two div:nth-child(1) {
+    opacity: 0;
+    animation: slideBottom 1s ease forwards;
+    animation-delay: 2.4s;
+  }
+
+  .two div:nth-child(2) {
+    opacity: 0;
+    animation: slideBottom 1s ease forwards;
+    animation-delay: 2.8s;
+  }
+
   /* ==================================================portfolio=================================================== */
   /* ==================================================portfolio=================================================== */
   .portfolio h2 {
@@ -1302,7 +1333,7 @@ body.light-mode .lightMode ul li.active button .icon {
     width: 70px;
     height: 35px;
     top: 20px; 
-    right: 50px;
+    right: 30px;
   }
 
   .lightMode ul {
