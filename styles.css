@@ -67,7 +67,7 @@ body {
   width: 100%;
   height: 5px;
   background: var(--accent-gradient-dark);
-  margin: 10px 0;
+  margin: 30px 0;
 }
 
 .header {
@@ -1065,6 +1065,81 @@ body.light-mode .lightMode ul li.active button .icon {
 /* ================================================== handy (max-width: 480px) & home =================================================== */
 
 @media (max-width: 480px) {
+
+  .lightMode {
+    width: 70px;
+    height: 35px;
+    /* rest bleibt gleich */
+  }
+
+  .lightMode ul {
+    width: 175px;
+  }
+
+  .lightMode ul li {
+    width: 35px;
+    height: 35px;
+  }
+
+  .lightMode ul li button .icon {
+    line-height: 35px;
+    font-size: 1.25em;
+  }
+  /* Aktives Mond-Icon (erstes li) */
+  .lightMode ul li:nth-child(1).active button .icon {
+    transform: translateY(-15px) rotate(360deg);
+  }
+
+  /* Aktives Sonnen-Icon (zweites li) */
+  .lightMode ul li:nth-child(2).active button .icon {
+    transform: translateY(-px) rotate(360deg);
+  }
+  /* Aktives Mond-Icon (erstes li) */
+  body.light-mode .lightMode ul li:nth-child(2).active button .icon {
+    transform: translateY(-15px) rotate(360deg);
+  }
+
+  .lightMode ul li button .text {
+    font-size: 0.75em;
+    transform: translateY(10px); /* von 20px auf 10px */
+  }
+
+  .lightMode ul li.active button .text {
+    transform: translateY(5px); /* von 10px auf 5px */
+  }
+
+  .lightMode ul li button .circle {
+    width: 25px;
+    height: 25px;
+    border-width: 1.5px;
+    transform: translateY(-17.5px) scale(0);
+  }
+
+  .lightMode ul li.active button .circle {
+    transform: translateY(-17.5px) scale(1);
+  }
+
+  .indicator {
+    width: 35px;
+    height: 35px;
+    border-width: 3px;
+  }
+
+  .indicator::before,
+  .indicator::after {
+    left: -11px;
+    right: -11px;
+    display: none;
+  }
+
+  .lightMode ul li:nth-child(1).active ~ .indicator {
+    transform: translateX(calc(35px * 0));
+  }
+
+  .lightMode ul li:nth-child(2).active ~ .indicator {
+    transform: translateX(calc(35px * 1));
+  }
+  
   #burgerMenu {
     display: block;
   }
@@ -1124,6 +1199,7 @@ body.light-mode .lightMode ul li.active button .icon {
   .home-sci {
     display: flex;
     justify-content: center;
+    margin: 50px 10%;
   }
 
   .home-sci a {
@@ -1217,7 +1293,83 @@ body.light-mode .lightMode ul li.active button .icon {
 /* ================================================== handy (min-width: 481px) and (max-width: 768px) =================================================== */
 /* ================================================== handy (min-width: 481px) and (max-width: 768px) =================================================== */
 
-@media (min-width: 481px) and (max-width: 768px) {
+
+
+
+  @media (min-width: 481px) and (max-width: 768px) {
+  .lightMode {
+    width: 70px;
+    height: 35px;
+    /* rest bleibt gleich */
+  }
+
+  .lightMode ul {
+    width: 175px;
+  }
+
+  .lightMode ul li {
+    width: 35px;
+    height: 35px;
+  }
+
+  .lightMode ul li button .icon {
+    line-height: 35px;
+    font-size: 1.25em;
+  }
+  /* Aktives Mond-Icon (erstes li) */
+  .lightMode ul li:nth-child(1).active button .icon {
+    transform: translateY(-15px) rotate(360deg);
+  }
+
+  /* Aktives Sonnen-Icon (zweites li) */
+  .lightMode ul li:nth-child(2).active button .icon {
+    transform: translateY(-px) rotate(360deg);
+  }
+  /* Aktives Mond-Icon (erstes li) */
+  body.light-mode .lightMode ul li:nth-child(2).active button .icon {
+    transform: translateY(-15px) rotate(360deg);
+  }
+
+  .lightMode ul li button .text {
+    font-size: 0.75em;
+    transform: translateY(10px); /* von 20px auf 10px */
+  }
+
+  .lightMode ul li.active button .text {
+    transform: translateY(5px); /* von 10px auf 5px */
+  }
+
+  .lightMode ul li button .circle {
+    width: 25px;
+    height: 25px;
+    border-width: 1.5px;
+    transform: translateY(-17.5px) scale(0);
+  }
+
+  .lightMode ul li.active button .circle {
+    transform: translateY(-17.5px) scale(1);
+  }
+
+  .indicator {
+    width: 35px;
+    height: 35px;
+    border-width: 3px;
+  }
+
+  .indicator::before,
+  .indicator::after {
+    left: -11px;
+    right: -11px;
+    display: none;
+  }
+
+  .lightMode ul li:nth-child(1).active ~ .indicator {
+    transform: translateX(calc(35px * 0));
+  }
+
+  .lightMode ul li:nth-child(2).active ~ .indicator {
+    transform: translateX(calc(35px * 1));
+  }
   /* ================================================== burgerMenu =================================================== */
   /* ================================================== burgerMenu =================================================== */
   #burgerMenu {
