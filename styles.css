@@ -1069,7 +1069,8 @@ body.light-mode .lightMode ul li.active button .icon {
   .lightMode {
     width: 70px;
     height: 35px;
-    /* rest bleibt gleich */
+    top: 20px;
+    left: 250px;
   }
 
   .lightMode ul {
@@ -1300,7 +1301,8 @@ body.light-mode .lightMode ul li.active button .icon {
   .lightMode {
     width: 70px;
     height: 35px;
-    /* rest bleibt gleich */
+    top: 20px; 
+    right: 50px;
   }
 
   .lightMode ul {
