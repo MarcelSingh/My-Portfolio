@@ -142,7 +142,7 @@ body {
 .lightMode {
   position: fixed;
   top: 35px;
-  right: 20px;
+  right: 60px;
   width: 140px;
   height: 70px;
   background: var(--accent-gradient-dark);
